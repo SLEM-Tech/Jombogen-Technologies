@@ -139,14 +139,25 @@ const SortedProducts = () => {
 
   return (
     <>
-      <div className="mb-8 lg:mb-16 border">
-        <div className="space-y-5 md:space-y-10">
+      <div className="mt-0 ml-0 md:mt-[-20px] md:ml-[-20px] bg-white md:bg-black text-white font-bold py-10 text-[30px] lg:text-[48px] ">
+        <div className="max-w-[1350px] mx-auto ">
+          <p className=" text-black md:text-white  text-[15px] font-thin py-6 leading-none ">
+            OUR SHOP
+          </p>
+          <p className="text-black md:text-white text-[22px] md:text-[30px] font-[500]">
+            All products
+          </p>
+        </div>
+      </div>
+
+      <div className="mb-8 lg:mb-16 md:mt-[-100px] md:ml-[-20px] bg-white md:bg-black">
+        <div className=" md:space-y-10">
           {categories
             ?.filter((category: CategoryType) => category?.count > 0)
             ?.slice(0, 5)
             ?.map((category: CategoryType) => (
-              <div key={category?.id} className="space-y-4 overflow-visible">
-                <div className="w-full max-w-[1350px] mx-auto mb-10 mt-20 items-center flex justify-between pr-2 lg:pr-2">
+              <div key={category?.id} className="md:space-y-4 overflow-visible">
+                <div className="w-full max-w-[1350px] mx-auto md:mb-10 md:mt-20 items-center flex justify-between pr-2 lg:pr-2">
                   <Link
                     href={`${
                       "/category/" +
@@ -160,7 +171,7 @@ const SortedProducts = () => {
                     dangerouslySetInnerHTML={{
                       __html: category?.name,
                     }}
-                    className=" text-lg sm:text-xl md:text-2xl w-4/5 font-medium tracking-tight text-black line-clamp-2"
+                    className=" text-lg sm:text-xl md:text-2xl w-4/5 font-medium tracking-tight text-black md:text-white line-clamp-2"
                   />
                   <Link
                     href={`${
@@ -172,13 +183,13 @@ const SortedProducts = () => {
                     onClick={() =>
                       handleCategoryClick(category?.name, category?.id)
                     }
-                    className="pr-text-sm font-medium tracking-tight text-black hover:text-primary transition hover:underline"
+                    className="pr-text-sm font-medium tracking-tight text-black md:text-white hover:text-primary transition hover:underline"
                   >
                     See all
                   </Link>
                 </div>
                 {/* Show loader when category products are loading */}
-                <div className="max-w-[1350px] mx-auto pr-8">
+                <div className="max-w-[1350px] mx-auto pr-8 md:pb-20">
                   <Carousel
                     totalDataNumber={
                       categoryProductsMap[category?.id]?.length || 0
@@ -223,6 +234,15 @@ const SortedProducts = () => {
             ))}
         </div>
       </div>
+
+      {/* <div className="bg-black mt-[-100px] ml-[-20px] ">
+        <Link href="/category" className="flex max-w-[1350px] mx-auto py-10">
+          <button className="bg-[#d4f53c] text-black text-sm font-semibold px-5 py-2.5 flex items-center gap-2 hover:brightness-95 transition-all">
+            See all
+            <span className="text-base">→</span>
+          </button>
+        </Link>
+      </div> */}
 
       <GlobalLoader isPending={categoryWpIsLoading || isPending} />
     </>

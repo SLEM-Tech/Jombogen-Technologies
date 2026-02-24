@@ -51,7 +51,7 @@ const ProductCard2 = ({
 
   return (
     <div
-      className={`group relative flex flex-col w-[340px]  lg:w-[220px] rounded-xl bg-white overflow-hidden ${
+      className={`group relative flex flex-col w-[280px]  lg:w-[220px] rounded-xl bg-white overflow-hidden ${
         boxShadow ? "shadow-sm" : "border border-gray-200"
       }`}
     >

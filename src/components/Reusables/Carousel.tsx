@@ -26,15 +26,15 @@ const Carousel = ({
           <BiSolidLeftArrow
             onClick={() => handlePrev()}
             className={`text-xl cursor-pointer hover:scale-105 transition ${
-              scrollLeftTotal! >= 5 ? "text-[#000]" : "text-gray-400"
+              scrollLeftTotal! >= 5 ? "text-gray-400" : "text-[#fff]"
             }`}
           />
           <BiSolidRightArrow
             onClick={() => handleNext()}
             className={`text-xl cursor-pointer hover:scale-105 transition ${
               scrollLeftTotal! >= maxScrollTotal!
-                ? "text-[#000]"
-                : "text-[gray-400]"
+                ? "text-gray-400"
+                : "text-[#fff]"
             }`}
           />
         </div>

@@ -126,130 +126,177 @@ const AllCategorySection = () => {
   return (
     <>
       {/* Hero Concept inspired by the image */}
-      <div className="relative min-h-screen bg-[#060809] overflow-hidden flex items-center">
-        <div className="max-w-[1350px] w-full mx-auto  flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
-          {/* Text Section */}
-          <div className="flex flex-col justify-start md:justify-center space-y-6 text-left lg:text-left p-2 md:p-1 ">
-            <h1 className="text-[24px] sm:text-4xl lg:text-5xl xl:text-6xl max-w-[680px] font-bold text-white leading-tight xl:leading-[60px]">
-              Your Top Technology Service Provider
-            </h1>
+      <div className="relative w-full h-screen overflow-hidden flex items-center justify-center">
+        {/* Background Image */}
+        <Image
+          alt="bg-image"
+          fill
+          src="/images/bgImage.png"
+          className="object-cover object-center"
+          priority
+        />
 
-            <p className="text-gray-300 text-[16px] sm:text-lg leading-relaxed max-w-[601px] ">
-              Your trusted technology service provider delivering innovative
-              solutions, reliable support, and seamless digital experiences to
-              power your business growth and success.
-            </p>
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/45" />
 
-            <div className="text-center md:text-left">
-              <Link
-                href="http://localhost:3000/category"
-                className="bg-amber-500 hover:bg-amber-600 text-black font-bold px-6 py-3 rounded-sm transition-transform hover:scale-105 mt-[40px] inline-block"
-              >
-                Shop Now
-              </Link>
-            </div>
-          </div>
+        {/* Content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-serif font-normal leading-tight mb-8 drop-shadow-lg">
+            Best Computer <br /> Accessories.
+          </h1>
 
-          {/* Image Section */}
-          <div className="w-full lg:w-1/2 flex justify-center">
-            <div className="relative w-full max-w-[700px] aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-              <Picture
-                src={heroBg}
-                alt="Technology Service Setup"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+          <button className="flex items-center gap-2 bg-white text-black text-sm font-medium px-6 py-3 rounded-full hover:bg-gray-100 transition-colors duration-200 shadow-md">
+            Shop Now
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </button>
         </div>
       </div>
 
-      <section className="w-full bg-[#f1f3f5] py-12">
-        <div className="max-w-[1350px] mx-auto  grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* Speed */}
-          <div className="flex items-center gap-6 space-y-4 max-w-[393px] ">
-            <div className="w-[72px] h-[72px] flex items-center justify-center  bg-white shadow-sm">
+      <section className="w-full bg-[#f1f3f5] py-20">
+        <div className="max-w-[1350px] mx-auto px-2 md:px-1 grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Secure Payment */}
+          <div className="flex flex-col gap-2 max-w-[393px]">
+            <div className="flex items-center gap-2">
               <Image
-                width={72}
-                height={72}
-                src="/images/speedImage.png"
-                alt="speed-image"
+                width={20}
+                height={20}
+                src="/images/cardSecurityImage.png"
+                alt="secure-payment-icon"
               />
+              <h3 className="text-sm font-semibold text-gray-900">
+                Secure Payment
+              </h3>
             </div>
-            <div className="flex flex-col items-start">
-              <h3 className="text-lg font-semibold text-gray-900">Speed</h3>
-              <p className="text-gray-500 text-sm max-w-xs">
-                Experience unmatched speed with high-performance computer
-                accessories.
-              </p>
-            </div>
+            <p className="text-gray-500 text-sm leading-snug">
+              Provide you with peace of mind while making purchases on here.
+            </p>
           </div>
 
-          {/* Security */}
-          <div className="flex items-center gap-6 space-y-4 max-w-[393px]  ">
-            <div className="w-[72px] h-[72px] flex items-center justify-center  bg-white shadow-sm">
+          {/* Fast Delivery */}
+          <div className="flex flex-col gap-2 max-w-[393px]">
+            <div className="flex items-center gap-2">
               <Image
-                width={72}
-                height={72}
-                src="/images/securityImage.png"
-                alt="security-image"
+                width={20}
+                height={20}
+                src="/images/deliveryImage.png"
+                alt="fast-delivery-icon"
               />
+              <h3 className="text-sm font-semibold text-gray-900">
+                Fast delivery
+              </h3>
             </div>
-            <div className="flex flex-col items-start">
-              <h3 className="text-lg font-semibold text-gray-900">Security</h3>
-              <p className="text-gray-500 text-sm max-w-xs">
-                safe device built to safeguard data, ensure privacy, and deliver
-                reliable protection for everyday use.
-              </p>
-            </div>
+            <p className="text-gray-500 text-sm leading-snug">
+              Allowing you to enjoy your new accessory without unnecessary
+              delays.
+            </p>
           </div>
 
-          {/* Support */}
-          <div className="flex items-center space-y-4 max-w-[393px] gap-6 ">
-            <div className="w-[72px] h-[72px] flex items-center justify-center  bg-white shadow-sm">
+          {/* Return Guarantee */}
+          <div className="flex flex-col gap-2 max-w-[393px]">
+            <div className="flex items-center gap-2">
               <Image
-                width={72}
-                height={72}
-                src="/images/supportImage.png"
-                alt="security-image"
+                width={20}
+                height={20}
+                src="/images/guaranteeImage.png"
+                alt="return-guarantee-icon"
               />
+              <h3 className="text-sm font-semibold text-gray-900">
+                Return Guarantee
+              </h3>
             </div>
-            <div className="flex flex-col items-start">
-              <h3 className="text-lg font-semibold text-gray-900">Support</h3>
-              <p className="text-gray-500 text-sm max-w-xs">
-                Expert assistance, quick solutions, and dedicated service to
-                keep your devices running smoothly.
-              </p>
-            </div>
+            <p className="text-gray-500 text-sm leading-snug">
+              Hassle-free return guarantee. we want you to be thrilled with your
+              purchases from us.
+            </p>
           </div>
         </div>
       </section>
       {/* Category Section Styling Idea */}
-      <h5 className="max-w-[1350px] mx-auto mt-[50px] pl-2 md:pl-0 text-#181818 font-bold text-[30px] lg:text-[48px]">
-        Browse categories
-      </h5>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mx-auto max-w-[1350px] px-2 lg:px-0  mt-6 gap-10">
-        {Categories?.slice(0, 5).map((cat) => {
-          const productImage = categoryProductsMap[cat?.id];
-          return (
-            <Link
-              key={cat.id}
-              href={`/category/${convertToSlug(cat.name)}-${cat.id}`}
-              className="group relative h-40 sm:h-48 bg-[#111] rounded-2xl overflow-hidden border border-white/5 hover:border-blue-500/50 transition-all"
-            >
-              <Picture
-                src={cat.image?.src ?? productImage}
-                alt={cat.image?.name}
-                className="w-full h-full object-contain opacity-60 group-hover:scale-110 transition-transform duration-700"
-              />
 
-              <div className="absolute bottom-4 left-4">
-                <h3 className="text-sm sm:text-lg font-bold text-white uppercase">
-                  {cat.name}
-                </h3>
-              </div>
-            </Link>
-          );
-        })}
+      <div className=" bg-black pl-2 md:pl-0 text-white font-bold py-10 mb-4 md:mb-0 text-[30px] lg:text-[48px]">
+        <div className="max-w-[1350px] mx-auto ">
+          <p className="text-white text-[15px] font-thin py-6 leading-none ">
+            OUR SHOP
+          </p>
+          <p className="text-white text-[22px] md:text-[30px] font-[500]">
+            Here are the best seller
+          </p>
+          <p className="text-white text-[22px] md:text-[30px] font-[500] mt-[-5px]">
+            categories for you
+          </p>
+        </div>
+      </div>
+
+      <div className="bg-black  ">
+        <div className="bg-white grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mx-auto max-w-[1350px] px-2 lg:px-0 gap-10">
+          {Categories?.slice(0, 5).map((cat) => {
+            const productImage = categoryProductsMap[cat?.id];
+            return (
+              <Link
+                key={cat.id}
+                href={`/category/${convertToSlug(cat.name)}-${cat.id}`}
+                className="group relative h-40 sm:h-48 bg-[#111] overflow-hidden border border-white/5 hover:border-blue-500/50 transition-all"
+              >
+                <Picture
+                  src={cat.image?.src ?? productImage}
+                  alt={cat.image?.name}
+                  className="w-full h-full object-contain opacity-60 group-hover:scale-110 transition-transform duration-700"
+                />
+
+                <div className="absolute bottom-4 left-4">
+                  <h3 className="text-sm sm:text-lg font-bold text-white uppercase">
+                    {cat.name}
+                  </h3>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="bg-black mt-10 md:mt-0 mb-0">
+        <Link href="/category" className="flex max-w-[1350px] mx-auto py-10">
+          <button className="bg-[#d4f53c] text-black text-sm font-semibold px-5 py-2.5 flex items-center gap-2 hover:brightness-95 transition-all">
+            See all
+            <span className="text-base">→</span>
+          </button>
+        </Link>
+      </div>
+
+      <div className="bg-black pt-[200px] pb-[100px] hidden md:block ">
+        <div className="flex flex-row mx-auto max-w-[1350px] gap-14">
+          <div className="w-[58%] h-[350px] overflow-hidden">
+            <Image
+              src="/images/image1.png"
+              alt="gaming mouse setup"
+              width={800}
+              height={350}
+              className="hidden md:flex w-full h-full object-cover object-center"
+            />
+          </div>
+          <div className=" w-full md:w-[42%] h-[350px] overflow-hidden">
+            <Image
+              src="/images/image2.png"
+              alt="iMac desk setup"
+              width={560}
+              height={350}
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+        </div>
       </div>
 
       {/* </Carousel> */}

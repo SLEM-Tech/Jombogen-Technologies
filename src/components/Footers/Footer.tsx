@@ -124,12 +124,12 @@ const Footer = () => {
 	const staggerDelay = 0.2;
 
 	return (
-    <footer className=" bg-black w-full py-2 flex flex-col item-center">
+    <footer className=" bg-white w-full py-2 flex flex-col item-center">
       <div className="mx-auto max-w-[1350px] w-full hidden slg:block">
         <section className="flex justify-center gap-16 mt-2">
           <div className="flex flex-col gap-4 w-[80%]">
             {/* <LogoImage className='!w-[20px] lg:!w-[30px] rounded-sm' /> */}
-            <p className="w-[20px] lg:!w-[30px] rounded-sm text-white">Logo</p>
+            <p className="w-[20px] lg:!w-[30px] rounded-sm text-black">Logo</p>
 
             {/* <div className="flex gap-1">
               {footer1socialMediaIcons.map((item, index) => (
@@ -150,7 +150,7 @@ const Footer = () => {
           <div className="flex gap-4 w-full pt-3">
             {footerData.map((section, index) => (
               <div key={index} className="flex flex-col gap-4 lg:gap-5 w-full">
-                <span className="text-white font-medium text-base leading-[1.6]">
+                <span className="text-black font-medium text-base leading-[1.6]">
                   {section.title}
                 </span>
                 {section.links.map((link, linkIndex) => (
@@ -158,7 +158,7 @@ const Footer = () => {
                     key={linkIndex}
                     href={link.href}
                     onClick={link.function}
-                    className="text-white text-sm leading-[1.3] hover:text-primary-100 transition-[.3]"
+                    className="text-black text-sm leading-[1.3] hover:text-primary-100 transition-[.3]"
                   >
                     {link.label}
                   </Link>
@@ -178,7 +178,7 @@ const Footer = () => {
           <div className="flex w-full justify-between items-end gap-4">
             <div className="">
               {/* <LogoImage className="!w-[30px] lg:!w-[30px]" /> */}
-              <p className="w-[20px] lg:!w-[30px] rounded-sm text-white">
+              <p className="w-[20px] lg:!w-[30px] rounded-sm text-black">
                 Logo
               </p>
             </div>
@@ -202,7 +202,7 @@ const Footer = () => {
           <div className="flex lg:gap-8 w-full pt-3">
             {footerData.map((section, index) => (
               <div key={index} className="flex flex-col gap-2 sm:gap-5 w-full">
-                <span className="text-white font-medium text-sm sm:text-base leading-[1.6]">
+                <span className="text-black font-medium text-sm sm:text-base leading-[1.6]">
                   {section.title}
                 </span>
 
@@ -210,7 +210,7 @@ const Footer = () => {
                   <Link
                     key={linkIndex}
                     href={link.href}
-                    className={`${link.href === pathname ? "text-primary-100" : "text-white"} text-xs sm:text-sm font-[400] hover:text-[#DC8204] transition-[.3] leading-6`}
+                    className={`${link.href === pathname ? "text-primary-100" : "text-black"} text-xs sm:text-sm font-[400] hover:text-[#DC8204] transition-[.3] leading-6`}
                   >
                     {link.label}
                   </Link>
@@ -221,9 +221,9 @@ const Footer = () => {
         </section>
       </div>
 
-      <div className="mx-auto max-w-[1156px]">
+      <div className="mx-auto px-2 max-w-[1156px]">
         <div className="flex items-center justify-center py-2">
-          <div className="text-white sm:font-mono text-xs leading-[1.2]">
+          <div className="text-black text-center sm:font-mono text-xs leading-[1.2]">
             Copyright&nbsp;@ {currentYear}&nbsp;{CompanyName} Alright Reserved.
           </div>
         </div>

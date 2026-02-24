@@ -7,34 +7,34 @@ import React from "react";
 import { usePathname } from "next/navigation";
 
 const HomePageBottomHeader = () => {
-	const pathname = usePathname();
+  const pathname = usePathname();
 
-	const phoneNumber = "09160001343";
-	return (
-		<nav
-			className={`hidden slg:flex justify-center gap-24 items-center w-full py-1 bg-dark transition`}
-		>
-			<div className='flex w-fit gap-8 overflow-hidden'>
-				{headerNavLinks.map((link) => (
-					<Link
-						key={link.id}
-						href={link.href}
-						className={`text-base font-medium leading-[1.8] transition hover:text-effect relative group ${
-							pathname === link.href ? "text-white" : "text-gray-500"
-						}`}
-					>
-						{link.text}
-						<span
-							className={`h-[1px] inline-block bg-effect absolute left-0 -bottom-0 group-hover:w-full transition-width ease duration-300 ${
-								pathname === link.href ? "w-full" : "w-0"
-							}`}
-						>
-							&nbsp;
-						</span>
-					</Link>
-				))}
-			</div>
-			{/* <div className='flex justify-center text-white items-center gap-2'>
+  const phoneNumber = "09160001343";
+  return (
+    <nav
+      className={`hidden slg:flex justify-center gap-24 items-center w-full py-1 bg-white transition`}
+    >
+      <div className="flex w-fit gap-8 overflow-hidden">
+        {headerNavLinks.map((link) => (
+          <Link
+            key={link.id}
+            href={link.href}
+            className={`text-base font-medium leading-[1.8] transition hover:text-effect relative group ${
+              pathname === link.href ? "text-black" : "text-gray-400"
+            }`}
+          >
+            {link.text}
+            <span
+              className={`h-[1px] inline-block bg-effect absolute left-0 -bottom-0 group-hover:w-full transition-width ease duration-300 ${
+                pathname === link.href ? "w-full" : "w-0"
+              }`}
+            >
+              &nbsp;
+            </span>
+          </Link>
+        ))}
+      </div>
+      {/* <div className='flex justify-center text-white items-center gap-2'>
 				<Iconbs.BsTelephone />
 				<div className='flex justify-center items-center'>
 					<span className='font-[300] leading-[1.8]'>Phone:&nbsp;</span>
@@ -46,8 +46,8 @@ const HomePageBottomHeader = () => {
 					</a>
 				</div>
 			</div> */}
-		</nav>
-	);
+    </nav>
+  );
 };
 
 export default HomePageBottomHeader;

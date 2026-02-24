@@ -30,28 +30,9 @@ const page = () => {
       <div className="mx-auto pl-2 mt-4">
         <SortedProducts />
       </div>
-      <MachineMaintenance />
-	  {/* <GetStarted/> */}
       <AppMenu />
     </AppLayout>
   );
 };
 
 export default page;
-
-{
-  /* <div className='pt-4 px-2 sm:px-0 mx-auto max-w-[1256px] mt-6 sm:mt-12'> */
-}
-{
-  /* <div className='mt-4 sm:mt-3'>
-					<section className='flex w-full flex-col items-center pt-16 text-center'>
-						<h3 className='font-semibold text-xl sm:text-2xl slg:text-4xl tracking-tighter'>
-							Frequently Asked Question
-						</h3>
-						<FaqAccordion />
-					</section>
-				</div> */
-}
-{
-  /* </div> */
-}
