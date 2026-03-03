@@ -116,9 +116,8 @@ const Header = () => {
         <div className="hidden slg:grid grid-cols-3 items-center justify-stretch w-full py-3 max-w-[1350px] mx-auto">
           {/* 1. Logo */}
           <div className="col-span-1 flex items-center gap-20 ">
-            <div className=" text-black font-bold text-[30px] ">
-              {/* <LogoImage className='!w-[35px] cursor-pointer brightness-200' /> */}
-              Logo
+            <div className=" ">
+              <LogoImage className='!w-[100px] cursor-pointer brightness-200' />
             </div>
           </div>
 
@@ -302,17 +301,17 @@ const Header = () => {
         )}
 
         {/* Mobile Header (Hidden on Laptop) */}
-        <div className="slg:hidden flex flex-col w-full p-4 gap-3 bg-black">
+        <div className="slg:hidden flex flex-col w-full p-4 gap-3 bg-gray-300">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <FiMenu
-                className="text-2xl text-white"
+                className="text-2xl text-black"
                 onClick={() => setDrawerVisible(true)}
               />
-              <LogoImage className="!w-[30px] brightness-200" />
+              <LogoImage className="!w-[100px] brightness-200" />
             </div>
             <div onClick={onOpenCart} className="relative">
-              <FiShoppingBag className="text-2xl text-white" />
+              <FiShoppingBag className="text-2xl text-black" />
               {totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 size-4 bg-blue-600 rounded-full text-[9px] flex items-center justify-center text-white">
                   {totalItems}

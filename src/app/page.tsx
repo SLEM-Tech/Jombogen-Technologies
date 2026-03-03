@@ -30,7 +30,7 @@ const page = () => {
       <div className="mx-auto pl-2 mt-4">
         <SortedProducts />
       </div>
-      <AppMenu />
+      {/* <AppMenu /> */}
     </AppLayout>
   );
 };

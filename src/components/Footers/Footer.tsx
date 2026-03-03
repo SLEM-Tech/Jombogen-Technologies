@@ -124,14 +124,14 @@ const Footer = () => {
 	const staggerDelay = 0.2;
 
 	return (
-    <footer className=" bg-white w-full py-2 flex flex-col item-center">
+    <footer className=" bg-white w-full py-2 flex flex-col item-center mb-[-100px]">
       <div className="mx-auto max-w-[1350px] w-full hidden slg:block">
         <section className="flex justify-center gap-16 mt-2">
           <div className="flex flex-col gap-4 w-[80%]">
-            {/* <LogoImage className='!w-[20px] lg:!w-[30px] rounded-sm' /> */}
-            <p className="w-[20px] lg:!w-[30px] rounded-sm text-black">Logo</p>
+            <LogoImage className='!w-[100px] lg:!w-[100px] rounded-sm' />
+            
 
-            {/* <div className="flex gap-1">
+            <div className="flex pl-3 gap-1">
               {footer1socialMediaIcons.map((item, index) => (
                 <motion.a
                   href={item.link}
@@ -144,7 +144,7 @@ const Footer = () => {
                   {item.icon}
                 </motion.a>
               ))}
-            </div> */}
+            </div>
           </div>
 
           <div className="flex gap-4 w-full pt-3">
@@ -177,13 +177,10 @@ const Footer = () => {
         <section className="flex flex-col justify-between gap-1 sm:gap-6 mt-2 px-2 xs:px-6 sm:px-10">
           <div className="flex w-full justify-between items-end gap-4">
             <div className="">
-              {/* <LogoImage className="!w-[30px] lg:!w-[30px]" /> */}
-              <p className="w-[20px] lg:!w-[30px] rounded-sm text-black">
-                Logo
-              </p>
+              <LogoImage className="!w-[100px] lg:!w-[100px]" /> 
             </div>
 
-            {/* <div className="flex gap-1 h-fit">
+            <div className="flex gap-1 h-fit">
               {footer1socialMediaIcons.map((item, index) => (
                 <motion.a
                   href={item.link}
@@ -196,7 +193,7 @@ const Footer = () => {
                   {item.icon}
                 </motion.a>
               ))}
-            </div> */}
+            </div>
           </div>
 
           <div className="flex lg:gap-8 w-full pt-3">
