@@ -242,28 +242,31 @@ const AllCategorySection = () => {
 
       <div className="bg-black  ">
         <div className="bg-white grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mx-auto max-w-[1350px] px-2 lg:px-0 gap-10">
-          {Categories?.slice(0, 5).map((cat) => {
-            const productImage = categoryProductsMap[cat?.id];
-            return (
-              <Link
-                key={cat.id}
-                href={`/category/${convertToSlug(cat.name)}-${cat.id}`}
-                className="group relative h-40 sm:h-48 bg-[#111] overflow-hidden border border-white/5 hover:border-blue-500/50 transition-all"
-              >
-                <Picture
-                  src={cat.image?.src ?? productImage}
-                  alt={cat.image?.name}
-                  className="w-full h-full object-contain opacity-60 group-hover:scale-110 transition-transform duration-700"
-                />
+          {categories
+            ?.filter((category: CategoryType) => category?.count > 0)
+            ?.slice(0, 5)
+            .map((cat:any) => {
+              const productImage = categoryProductsMap[cat?.id];
+              return (
+                <Link
+                  key={cat.id}
+                  href={`/category/${convertToSlug(cat.name)}-${cat.id}`}
+                  className="group relative h-40 sm:h-48 bg-[#111] overflow-hidden border border-white/5 hover:border-blue-500/50 transition-all"
+                >
+                  <Picture
+                    src={cat.image?.src ?? productImage}
+                    alt={cat.image?.name}
+                    className="w-full h-full object-contain opacity-60 group-hover:scale-110 transition-transform duration-700"
+                  />
 
-                <div className="absolute bottom-4 left-4">
-                  <h3 className="text-sm sm:text-lg font-bold text-white uppercase">
-                    {cat.name}
-                  </h3>
-                </div>
-              </Link>
-            );
-          })}
+                  <div className="absolute bottom-4 left-4">
+                    <h3 className="text-sm sm:text-lg font-bold text-white uppercase">
+                      {cat.name}
+                    </h3>
+                  </div>
+                </Link>
+              );
+            })}
         </div>
       </div>
 
