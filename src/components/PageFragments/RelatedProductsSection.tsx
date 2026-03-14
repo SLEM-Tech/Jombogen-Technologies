@@ -59,51 +59,54 @@ const RelatedProductsSection = ({
 		}
 	};
 	return (
-		<div className='bg-white mt-1 slg:mt-3 w-full pt-2 pb-8 px-3 slg:px-6 mb-24'>
-			<h4 className='text-accent uppercase text-xs slg:text-sm font-bold leading-[1.5] pt-6 pb-3'>
-				Related products
-			</h4>
-			<div className=''>
-				<hr className='text-[#E0E0E0]' />
-				<hr className='text-primary-100 font-bold w-2/12' />
-			</div>
-			<div className='mt-6'>
-				<Carousel
-					totalDataNumber={TotalCategoryProducts}
-					maxScrollTotal={maxScrollTotal}
-					scrollLeftTotal={scrollLeftTotal}
-					handleNext={handleNext}
-					handlePrev={handlePrev}
-				>
-					<div
-						ref={sliderRef}
-						className='flex space-x-6 overflow-x-auto scroll-smooth overflow-y-hidden no-scrollbar'
-					>
-						<>
-							{categoryProductsWpIsLoading ? (
-								<Loader />
-							) : (
-								<>
-									{CategoryProducts?.map((product) => (
-										<>
-											<ProductCard2
-												key={product?.id}
-												id={product?.id}
-												image={product?.images[0]?.src}
-												oldAmount={product?.regular_price}
-												newAmount={product?.price}
-												description={product?.name}
-											/>
-										</>
-									))}
-								</>
-							)}
-						</>
-					</div>
-				</Carousel>
-			</div>
-		</div>
-	);
+    <div className="bg-white mt-1 slg:mt-3 w-full pt-2 pb-8 px-3 slg:px-6 mb-24">
+      <h4 className="text-accent uppercase text-xs slg:text-sm font-bold leading-[1.5] pt-6 pb-3">
+        Related products
+      </h4>
+      <div className="">
+        <hr className="text-[#E0E0E0]" />
+        <hr className="text-primary-100 font-bold w-2/12" />
+      </div>
+      <div className="mt-6">
+        <Carousel
+          totalDataNumber={TotalCategoryProducts}
+          maxScrollTotal={maxScrollTotal}
+          scrollLeftTotal={scrollLeftTotal}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+        >
+          <div
+            ref={sliderRef}
+            className="flex  space-x-6 overflow-x-auto scroll-smooth overflow-y-hidden no-scrollbar"
+          >
+            <>
+              {categoryProductsWpIsLoading ? (
+                <Loader />
+              ) : (
+                <>
+                  {CategoryProducts?.map((product) => (
+                    <div
+                      key={product.id}
+                      className="w-[300px] flex-shrink-0 snap-start"
+                    >
+                      <ProductCard2
+                        key={product?.id}
+                        id={product?.id}
+                        image={product?.images[0]?.src}
+                        oldAmount={product?.regular_price}
+                        newAmount={product?.price}
+                        description={product?.name}
+                      />
+                    </div>
+                  ))}
+                </>
+              )}
+            </>
+          </div>
+        </Carousel>
+      </div>
+    </div>
+  );
 };
 
 export default RelatedProductsSection;

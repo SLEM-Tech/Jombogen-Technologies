@@ -36,6 +36,7 @@ const AllCategorySection = () => {
     isError: categoryIsError,
   } = useCategories("");
 
+  //@ts-ignore
   const Categories: CategoryType[] = categories;
   const TotalCatgory = Categories?.length - 1;
 
@@ -145,7 +146,10 @@ const AllCategorySection = () => {
             Best Computer <br /> Accessories.
           </h1>
 
-          <button className="flex items-center gap-2 bg-white text-black text-sm font-medium px-6 py-3 rounded-full hover:bg-gray-100 transition-colors duration-200 shadow-md">
+          <Link
+            href="/category"
+            className="flex items-center gap-2 bg-white text-black text-sm font-medium px-6 py-3 rounded-full hover:bg-gray-100 transition-colors duration-200 shadow-md"
+          >
             Shop Now
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +165,7 @@ const AllCategorySection = () => {
               <line x1="7" y1="17" x2="17" y2="7" />
               <polyline points="7 7 17 7 17 17" />
             </svg>
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -241,11 +245,11 @@ const AllCategorySection = () => {
       </div>
 
       <div className="bg-black  ">
-        <div className="bg-white grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mx-auto max-w-[1350px] px-2 lg:px-0 gap-10">
+        <div className="bg-black grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mx-auto max-w-[1350px] px-2 lg:px-0 gap-10">
           {categories
             ?.filter((category: CategoryType) => category?.count > 0)
             ?.slice(0, 5)
-            .map((cat:any) => {
+            .map((cat: any) => {
               const productImage = categoryProductsMap[cat?.id];
               return (
                 <Link
@@ -256,7 +260,7 @@ const AllCategorySection = () => {
                   <Picture
                     src={cat.image?.src ?? productImage}
                     alt={cat.image?.name}
-                    className="w-full h-full object-contain opacity-60 group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
                   />
 
                   <div className="absolute bottom-4 left-4">

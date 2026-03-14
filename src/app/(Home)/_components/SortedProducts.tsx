@@ -9,31 +9,23 @@ import {
   WooCommerce,
 } from "@src/components/lib/woocommerce";
 import GlobalLoader from "@src/components/modal/GlobalLoader";
-import Carousel from "@src/components/Reusables/Carousel";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useRef, useState, useTransition } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import { useDispatch } from "react-redux";
 
 export const Loader = () => (
-  <div className="flex gap-2 w-full items-center">
-    {/* Add more loader divs if you want more placeholders */}
-    <div className="min-w-[150px] md:min-w-[180px] h-[180px] sm:h-[230px] bg-gray-200 animate-pulse rounded-md" />
-    <div className="min-w-[150px] md:min-w-[180px] h-[180px] sm:h-[230px] bg-gray-200 animate-pulse rounded-md" />
-    <div className="min-w-[150px] md:min-w-[180px] h-[180px] sm:h-[230px] bg-gray-200 animate-pulse rounded-md" />
-    <div className="min-w-[150px] md:min-w-[180px] h-[180px] sm:h-[230px] bg-gray-200 animate-pulse rounded-md" />
-    <div className="min-w-[150px] md:min-w-[180px] h-[180px] sm:h-[230px] bg-gray-200 animate-pulse rounded-md" />
-    <div className="min-w-[150px] md:min-w-[180px] h-[180px] sm:h-[230px] bg-gray-200 animate-pulse rounded-md" />
-    <div className="min-w-[150px] md:min-w-[180px] h-[180px] sm:h-[230px] bg-gray-200 animate-pulse rounded-md" />
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 w-full">
+    {Array.from({ length: 10 }).map((_, i) => (
+      <div
+        key={i}
+        className="h-[200px] w-[350px] sm:w-[350px] sm:h-[250px] bg-gray-200 animate-pulse rounded-md"
+      />
+    ))}
   </div>
 );
 
 const SortedProducts = () => {
-  // Create a Map to store refs for each category
-  const sliderRefs = useRef<Map<string, HTMLDivElement>>(new Map());
-  const [maxScrollTotal, setMaxScrollTotal] = useState(0);
-  const [scrollLeftTotal, setScrollLeftTotal] = useState(0);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const dispatch = useDispatch();
   const [isPending, startTransition] = useTransition();
@@ -93,42 +85,6 @@ const SortedProducts = () => {
     }
   }, [categories]);
 
-  // Callback ref setter
-  const setSliderRef = (categoryId: string) => (el: HTMLDivElement | null) => {
-    if (el) {
-      sliderRefs.current.set(categoryId, el);
-    }
-  };
-
-  const handleNext = (categoryId?: string) => {
-    if (!categoryId) return;
-    const sliderRef = sliderRefs.current.get(categoryId);
-    if (sliderRef) {
-      const { scrollLeft, scrollWidth, clientWidth } = sliderRef;
-      const maxScroll = scrollWidth - clientWidth;
-      setScrollLeftTotal(scrollLeft);
-      setMaxScrollTotal(maxScroll);
-      sliderRef.scrollLeft += 600;
-    }
-  };
-
-  const handlePrev = (categoryId?: string) => {
-    if (!categoryId) return;
-    const sliderRef = sliderRefs.current.get(categoryId);
-    if (sliderRef) {
-      const { scrollLeft, scrollWidth, clientWidth } = sliderRef;
-      const maxScroll = scrollWidth - clientWidth;
-      setScrollLeftTotal(scrollLeft);
-      setMaxScrollTotal(maxScroll);
-      if (scrollLeft > 0) {
-        sliderRef.scrollLeft -= 600;
-        setCurrentIndex((prevIndex) =>
-          prevIndex > 0 ? prevIndex - 1 : prevIndex,
-        );
-      }
-    }
-  };
-
   const handleCategoryClick = (name: string, id: number) => {
     const categorySlugId = `${convertToSlug(name) + "-" + id}`;
     dispatch(updateCategorySlugId({ categorySlugId }));
@@ -156,7 +112,7 @@ const SortedProducts = () => {
             ?.filter((category: CategoryType) => category?.count > 0)
             ?.slice(0, 5)
             ?.map((category: CategoryType) => (
-              <div key={category?.id} className="md:space-y-4 overflow-visible">
+              <div key={category?.id} className="space-y-6 md:space-y-4 overflow-visible">
                 <div className="w-full max-w-[1350px] mx-auto md:mb-10 md:mt-20 items-center flex justify-between pr-2 lg:pr-2">
                   <Link
                     href={`${
@@ -189,46 +145,26 @@ const SortedProducts = () => {
                   </Link>
                 </div>
                 {/* Show loader when category products are loading */}
-                <div className="max-w-[1350px] mx-auto pr-8 md:pb-20">
-                  <Carousel
-                    totalDataNumber={
-                      categoryProductsMap[category?.id]?.length || 0
-                    }
-                    maxScrollTotal={maxScrollTotal}
-                    scrollLeftTotal={scrollLeftTotal}
-                    handleNext={() => handleNext(category?.id?.toString())}
-                    handlePrev={() => handlePrev(category?.id?.toString())}
-                  >
-                    <div
-                      ref={setSliderRef(category?.id?.toString())}
-                      className="w-full max-w-[1350px] mx-auto flex gap-4 sm:gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth pb-4"
-                      style={{
-                        scrollbarWidth: "none" /* Firefox */,
-                        msOverflowStyle: "none" /* IE/Edge */,
-                      }}
-                    >
-                      {isLoading ? (
-                        <Loader />
-                      ) : (
-                        categoryProductsMap[category?.id]?.map(
-                          (product: ProductType) => (
-                            <div
-                              key={product.id}
-                              className="flex-shrink-0 snap-start"
-                            >
-                              <ProductCard2
-                                id={product?.id}
-                                image={product?.images[0]?.src}
-                                oldAmount={product?.regular_price}
-                                newAmount={product?.price}
-                                description={product?.name}
-                              />
-                            </div>
-                          ),
-                        )
-                      )}
-                    </div>
-                  </Carousel>
+                <div className="max-w-[1350px] mx-auto pr-2 pb-8 md:pr-8 md:pb-10">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 w-full">
+                    {isLoading ? (
+                      <Loader />
+                    ) : (
+                      categoryProductsMap[category?.id]?.map(
+                        (product: ProductType) => (
+                          <div key={product.id}>
+                            <ProductCard2
+                              id={product?.id}
+                              image={product?.images[0]?.src}
+                              oldAmount={product?.regular_price}
+                              newAmount={product?.price}
+                              description={product?.name}
+                            />
+                          </div>
+                        ),
+                      )
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
