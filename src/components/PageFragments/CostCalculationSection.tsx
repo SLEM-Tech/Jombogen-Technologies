@@ -306,7 +306,7 @@ const CostCalculationSection = () => {
 									>
 										terms & conditions
 									</span>{" "}
-									of Nestora Digital Innovations
+									of Jombogen Technologies
 								</span>
 							</label>
 						</div>

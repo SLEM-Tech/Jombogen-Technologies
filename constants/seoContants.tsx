@@ -8,12 +8,12 @@ export const SITE_URL =
 export const TWITTER_HANDLE = "@jombogentechnologies";
 
 interface SEOConfig {
-	title: string;
-	description: string;
-	keywords: string[];
-	url?: string;
-	ogImage?: string;
-	noIndex?: boolean;
+  title: string;
+  description: string;
+  keywords: string[];
+  url?: string;
+  ogImage?: string;
+  noIndex?: boolean;
 }
 // 2. The SEO Database
 export const SEODATA: Record<string, SEOConfig> = {
@@ -35,7 +35,7 @@ export const SEODATA: Record<string, SEOConfig> = {
   home: {
     title: `${SITE_NAME} | Leading Digital Solutions & Tech Excellence`,
     description:
-      "Innovate and grow with Nestora. We build high-performance digital products, from mobile apps to enterprise AI systems, tailored to your business needs.",
+      "Innovate and grow with jombogen. We build high-performance digital products, from mobile apps to enterprise AI systems, tailored to your business needs.",
     keywords: [
       "Mobile App Development",
       "Enterprise Software",
@@ -117,37 +117,37 @@ export const SEODATA: Record<string, SEOConfig> = {
  * Helper to generate Next.js Metadata objects
  */
 export function constructMetadata(
-	pageKey: keyof typeof SEODATA = "default",
+  pageKey: keyof typeof SEODATA = "default",
 ): Metadata {
-	const config = SEODATA[pageKey] || SEODATA.default;
+  const config = SEODATA[pageKey] || SEODATA.default;
 
-	// Merge page-specific keywords with default brand keywords
-	const allKeywords = Array.from(
-		new Set([...config.keywords, ...SEODATA.default.keywords]),
-	);
+  // Merge page-specific keywords with default brand keywords
+  const allKeywords = Array.from(
+    new Set([...config.keywords, ...SEODATA.default.keywords]),
+  );
 
-	return {
-		title: config.title,
-		description: config.description,
-		keywords: allKeywords.join(", "),
-		openGraph: {
-			title: config.title,
-			description: config.description,
-			url: config.url || SITE_URL,
-			siteName: SITE_NAME,
-			images: [{ url: config.ogImage || SEODATA.default.ogImage! }],
-			type: "website",
-		},
-		twitter: {
-			card: "summary_large_image",
-			title: config.title,
-			description: config.description,
-			creator: TWITTER_HANDLE,
-			images: [config.ogImage || SEODATA.default.ogImage!],
-		},
-		robots: config.noIndex ? "noindex, nofollow" : "index, follow",
-		alternates: {
-			canonical: config.url || SITE_URL,
-		},
-	};
+  return {
+    title: config.title,
+    description: config.description,
+    keywords: allKeywords.join(", "),
+    openGraph: {
+      title: config.title,
+      description: config.description,
+      url: config.url || SITE_URL,
+      siteName: SITE_NAME,
+      images: [{ url: config.ogImage || SEODATA.default.ogImage! }],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: config.title,
+      description: config.description,
+      creator: TWITTER_HANDLE,
+      images: [config.ogImage || SEODATA.default.ogImage!],
+    },
+    robots: config.noIndex ? "noindex, nofollow" : "index, follow",
+    alternates: {
+      canonical: config.url || SITE_URL,
+    },
+  };
 }

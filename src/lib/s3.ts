@@ -6,16 +6,16 @@ import {
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 const s3 = new S3Client({
-	region: process.env.AWS_REGION || "us-east-1",
+	region: process.env.S3_REGION || "us-east-1",
 	credentials: {
-		accessKeyId: process.env.AWS_ACCESS_KEY || "",
+		accessKeyId: process.env.S3_ACCESS_KEY || "",
 		secretAccessKey:
-			process.env.AWS_SECRET_KEY ||
+			process.env.S3_SECRET_KEY ||
 			"",
 	},
 });
 
-const BUCKET = process.env.AWS_BUCKET_NAME || "mondu-test";
+const BUCKET = process.env.S3_BUCKET_NAME || "mondu-test";
 
 export async function uploadFileToS3(
 	file: Buffer,
